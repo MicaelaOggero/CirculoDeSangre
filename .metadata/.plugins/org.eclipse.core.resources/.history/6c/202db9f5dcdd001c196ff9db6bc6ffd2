@@ -1,0 +1,86 @@
+package tp1;
+
+import java.util.*;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Scanner teclado = new Scanner(System.in);
+		ArrayList<Socio> list_socios = new ArrayList<Socio>();
+		ArrayList<Donacion> list_donacion = new ArrayList<Donacion>();
+		
+		int opcion;
+		
+		boolean salir = false;
+		//mientras que yo no le diga salir que siga funcionando
+		while(!salir) {
+		
+		System.out.println("-----Menú-----");
+		System.out.println("1. Registrarse");
+		System.out.println("2. Registar donacion");
+		System.out.println("3. Mostrar Datos");
+		System.out.println("4. Salir");
+		System.out.print("Opción: ");
+		opcion=teclado.nextInt();
+		
+			switch(opcion){
+				case 1:
+					Socio socio=new Socio();
+					Donacion donacion = new Donacion();
+					socio.asigCategoria();
+					list_socios.add(socio);
+					list_donacion.add(donacion);
+					break;
+			
+				case 2: 
+					int id;
+					System.out.print("DNI: ");
+					id=teclado.nextInt();
+					for(int i=0;i<=list_socios.size()-1;i++) {
+						
+						if(id==list_socios.get(i).getDni()) {
+							list_donacion.get(i).registrarDonacion(2022, 5, 27);
+							list_donacion.get(i).actualizarEstadoDonacion();
+							
+						}
+					}
+					
+					
+					break;
+			
+				case 3:
+					
+					System.out.println("Datos: ");
+					for(int j=0;j<=list_socios.size()-1;j++) {
+						
+						System.out.println("Nombre: "+list_socios.get(j).getNombre()+" Categoria: "
+								+list_socios.get(j).getEstadoCategoria()+" Estado Donacion: "
+								+list_donacion.get(j).getDono());
+						System.out.print("Fecha Donacion: ");
+						if(list_donacion.get(j).getDono()=="Dono") {
+							System.out.println(list_donacion.get(j).getFechaDonacion());
+						}
+						
+						else System.out.println("No realizo ninguna donacion");
+						
+					}
+					
+					
+					break;
+					
+				case 4:
+					salir=true;
+					break;
+			
+				default:
+					System.out.print("La opcion no es valida");
+			}
+		
+		
+		}
+		
+
+	}
+
+}

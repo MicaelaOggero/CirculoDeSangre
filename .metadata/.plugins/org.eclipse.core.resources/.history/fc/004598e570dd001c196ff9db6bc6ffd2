@@ -1,0 +1,75 @@
+package tp1;
+
+import java.util.*;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Scanner teclado = new Scanner(System.in);
+		ArrayList<Socio> list_socios = new ArrayList<Socio>();
+
+		
+		int opcion;
+		
+		boolean salir = false;
+		//mientras que yo no le diga salir que siga funcionando
+		while(!salir) {
+		
+		System.out.println("-----Menú-----");
+		System.out.println("1. Registrarse");
+		System.out.println("2. Registar donacion");
+		System.out.println("3. Mostrar Datos");
+		System.out.println("4. Salir");
+		System.out.print("Opción: ");
+		opcion=teclado.nextInt();
+		
+			switch(opcion){
+				case 1:
+					Socio socio=new Socio();
+					socio.asigCategoria();
+					list_socios.add(socio);
+					break;
+			
+				case 2: 
+					Donacion donacion = new Donacion();
+					int id;
+					System.out.print("DNI: ");
+					id=teclado.nextInt();
+					for(int i=0;i<=list_socios.size()-1;i++) {
+						
+						if(id==list_socios.get(i).getDni()) {
+							donacion.registrarDonacion(i);
+							donacion.actualizarEstadoDonacion(i);
+							
+						}
+					}
+					
+					break;
+			
+				case 3:
+					
+					for(int i=0;i<=list_socios.size()-1;i++) {
+						
+						System.out.println("Nombre: "+list_socios.get(i).getNombre()+" Categoria: "
+								+list_socios.get(i).getEstadoCategoria());
+					}
+					
+					
+					
+					break;
+					
+				case 4:
+					salir=true;
+					break;
+			
+				default:
+					System.out.print("La opcion no es valida");
+			}
+		}
+		
+		
+
+	}
+
+}

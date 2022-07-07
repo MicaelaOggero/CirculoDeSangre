@@ -1,0 +1,61 @@
+package tp1;
+
+import java.util.*;
+import java.time.*;
+
+public class Donacion {
+	private LocalDate fechaDonacion;
+	private Scanner teclado;
+	private boolean dono=false;
+	private int dia, mes, anio;
+	
+	public Donacion() {
+		fechaDonacion = LocalDate.now();
+		dono=false;
+	}
+	
+	
+	public LocalDate getFechaDonacion() {
+		
+		return fechaDonacion;
+	}
+	
+	public String getDono() {
+		String estadoDonacion;
+		
+		if(dono) {
+			estadoDonacion="Dono";
+		}
+		else estadoDonacion="No dono";
+		
+		return estadoDonacion;
+	}
+	
+	
+	
+	public void registrarDonacion(int anio, int mes, int dia) {
+		
+		System.out.println("Fecha Donacion: ");
+		this.dia=dia;
+		System.out.print("Día: ");
+		this.dia=teclado.nextInt();
+		this.mes=mes;
+		System.out.print("Mes: ");
+		this.mes=teclado.nextInt();
+		this.anio=anio;
+		System.out.print("Año: ");
+		this.anio=teclado.nextInt();
+
+		
+		fechaDonacion=LocalDate.of(this.anio, this.mes, this.dia);
+		
+		
+				
+	}
+	
+	public void actualizarEstadoDonacion() {
+		
+		dono=true;
+		
+	}
+}
